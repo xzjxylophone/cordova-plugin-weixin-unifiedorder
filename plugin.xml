@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.justep.cordova.plugin.weixin"
+    version="5.3.0">
+    <name>Weixin</name>
+    
+    <js-module src="www/weixin.js" name="weixin">
+        <clobbers target="navigator.weixin" />
+    </js-module>
+	
+    
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Weixin">
+                <param name="ios-package" value="CDVWeixin"/>
+                <param name="onload" value="true" />
+            </feature>
+            <!-- 以下的几个参数是随时可以更改的 -->
+              <preference name="weixinappid" value="wx832f85feb2e76b14" />
+            <preference name="partner_id" value="1230177801" />
+            <preference name="partner_key" value="be9aded460e78703b889f18e2915ea6b" />
+            <preference name="app_secret" value="43cab6b2766381683f6cb1b4ee6db27a" />
+        </config-file>
+		<header-file src="src/ios/CDVWeixin.h" />
+        <source-file src="src/ios/CDVWeixin.m" />
+        
+        <!-- WXLib -->
+
+        <source-file src="src/ios/WXLib/libWeChatSDK.a" framework="true" />
+        <header-file src="src/ios/WXLib/WXApi.h" />
+        <header-file src="src/ios/WXLib/WXApiObject.h" />
+        
+        <!-- WXSupport -->
+        
+        <header-file src="src/ios/WXSupport/ApiXml.h" />
+        <header-file src="src/ios/WXSupport/ApiXml.mm" />
+        <header-file src="src/ios/WXSupport/WXUtil.h" />
+        <header-file src="src/ios/WXSupport/WXUtil.mm" />
+        <header-file src="src/ios/WXSupport/WXPayRequsestHandler.h" />
+        <header-file src="src/ios/WXSupport/WXPayRequsestHandler.mm" />
+        
+        
+        
+        <!-- afnetworking 依赖security.framework -->
+        <framework src="Security.framework"/>
+        <framework src="libsqlite3.dylib"/>
+        <framework src="libz.dylib"/>
+        <framework src="libc++.dylib"/>
+        <framework src="SystemConfiguration.framework"/>
+        
+        
+		<config-file target="*-Info.plist" parent="CFBundleURLTypes">
+		    <array>
+				<dict>
+					<key>CFBundleTypeRole</key>
+					<string>Editor</string>
+					<key>CFBundleURLIconFile</key>
+					<string>icon-50@2x</string>
+					<key>CFBundleURLName</key>
+					<string>weixin</string>
+					<key>CFBundleURLSchemes</key>
+					<array>
+						<string>wx832f85feb2e76b14</string>
+					</array>
+				</dict>
+			</array>
+		</config-file>
+    </platform>
+
+    <!-- android -->
+    <platform name="android">
+         <hook
+            type="after_plugin_install"
+            src="scripts/android/changePackage.js" />
+         <hook
+            type="before_plugin_rm"
+            src="scripts/android/changePackage.js" />   
+
+        <config-file target="res/xml/config.xml" parent="/*">
+              <preference name="weixinappid" value="wx832f85feb2e76b14" />
+            <preference name="partner_id" value="1230177801" />
+            <preference name="partner_key" value="be9aded460e78703b889f18e2915ea6b" />
+            <preference name="app_secret" value="43cab6b2766381683f6cb1b4ee6db27a" />
+            <preference name="app_key" value="8e5UlAqM5tJr7gVnbiPJbO6ZXFgwHAQ6mHaohjvTpbuTvnsZWuNlGsooC8Rp8owsSS5TcnAW1caNamUGL8w8GuESCCftDzNarmmRKqGRhFAdqomDjRSgAL2HezQ1iCZz" />
+     <feature name="Weixin">
+		        <param name="android-package" value="com.justep.cordova.plugin.weixin.Weixin" />
+		        <param name="onload" value="true" />
+		    </feature>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application/activity[@android:name='X5']">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="wx832f85feb2e76b14"/>
+            </intent-filter>
+        </config-file>
+        
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity
+	            android:name=".wxapi.WXPayEntryActivity"
+	            android:exported="true"
+	            android:launchMode="singleTop">
+	        </activity>
+	        <receiver
+            	android:name="net.sourceforge.simcpux.AppRegister">
+	            <intent-filter>
+	                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+	            </intent-filter>
+       		</receiver>
+        </config-file>
+        
+        <source-file src="src/android/libammsdk.jar" target-dir="libs"/>
+        <source-file src="src/android/com/justep/cordova/Config.java" target-dir="src/com/justep/cordova" />
+        <source-file src="src/android/com/justep/cordova/ConfigXmlParser.java" target-dir="src/com/justep/cordova" />
+        <source-file src="src/android/com/justep/cordova/CordovaPreferences.java" target-dir="src/com/justep/cordova" />
+        
+        <source-file src="src/android/com/justep/cordova/plugin/weixin/Weixin.java" target-dir="src/com/justep/cordova/plugin/weixin" />
+        <source-file src="src/android/com/justep/cordova/plugin/weixin/PayOrder.java" target-dir="src/com/justep/cordova/plugin/weixin" />
+        <source-file src="src/android/com/justep/x5/v3/wxapi/WXPayEntryActivity.java" target-dir="src/com/justep/x5/v3/wxapi" />
+        <source-file src="src/android/net/sourceforge/simcpux/AppRegister.java" target-dir="src/net/sourceforge/simcpux" />
+        <source-file src="src/android/net/sourceforge/simcpux/MD5.java" target-dir="src/net/sourceforge/simcpux" />
+        <source-file src="src/android/net/sourceforge/simcpux/Util.java" target-dir="src/net/sourceforge/simcpux" />
+    </platform>
+</plugin>
