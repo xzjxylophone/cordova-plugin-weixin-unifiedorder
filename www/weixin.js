@@ -1,13 +1,13 @@
-cordova.define("com.justep.cordova.plugin.weixin.weixin", function(require, exports, module) {
+
 
                
 /**           
  // 使用 demo
                var weixin = navigator.weixin;
-               var payInfo = {"body":"x5",
+               var payInfo = {"body":"x5555",
                "notify_url":"http://www.baidu.com",
                "total_fee":"1",
-               "out_trade_no":"123456789",
+               "out_trade_no":"1234567891",
                // 以下是可选的
                "device_info":'APP-001',
                "spbill_create_ip":'196.168.1.1'};
@@ -45,4 +45,4 @@ module.exports = {
     },
 
 };
-});
+

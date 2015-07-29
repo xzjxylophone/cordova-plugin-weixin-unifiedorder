@@ -20,10 +20,10 @@
                 <param name="onload" value="true" />
             </feature>
             <!-- 以下的几个参数是随时可以更改的 -->
-              <preference name="weixinappid" value="wx832f85feb2e76b14" />
-            <preference name="partner_id" value="1230177801" />
-            <preference name="partner_key" value="be9aded460e78703b889f18e2915ea6b" />
-            <preference name="app_secret" value="43cab6b2766381683f6cb1b4ee6db27a" />
+              <preference name="weixinappid" value="wx6633a5c45669f132" />
+            <preference name="partner_id" value="1255284101" />
+            <preference name="partner_key" value="b3a9764583f0534f0c5303fe14d4355c" />
+            <preference name="app_secret" value="yiyizuche2015yyzc2015yizukeji409" />
         </config-file>
 		<header-file src="src/ios/CDVWeixin.h" />
         <source-file src="src/ios/CDVWeixin.m" />
