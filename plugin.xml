@@ -37,11 +37,11 @@
         <!-- WXSupport -->
         
         <header-file src="src/ios/WXSupport/ApiXml.h" />
-        <header-file src="src/ios/WXSupport/ApiXml.mm" />
+        <source-file src="src/ios/WXSupport/ApiXml.mm" />
         <header-file src="src/ios/WXSupport/WXUtil.h" />
-        <header-file src="src/ios/WXSupport/WXUtil.mm" />
+        <source-file src="src/ios/WXSupport/WXUtil.mm" />
         <header-file src="src/ios/WXSupport/WXPayRequsestHandler.h" />
-        <header-file src="src/ios/WXSupport/WXPayRequsestHandler.mm" />
+        <source-file src="src/ios/WXSupport/WXPayRequsestHandler.mm" />
         
         
         
