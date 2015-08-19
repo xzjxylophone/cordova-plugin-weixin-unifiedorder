@@ -1,6 +1,7 @@
 #import "CDVWeixin.h"
 #import "WXUtil.h"
 #import "WXHttpUtil.h"
+#import "WXApi.h"
 
 #import "WXPayRequsestHandler.h"
 @interface CDVWeixin ()
@@ -97,6 +98,13 @@
     if (prepayInfo == nil) {
         return;
     }
+    
+    if (![WXApi isWXAppInstalled]) {
+        CDVPluginResult* result = [CDVPluginResult resultWithStatus: CDVCommandStatus_ERROR messageAsString:@"未安装微信"];
+        [self.commandDelegate sendPluginResult:result callbackId:self.currentCallbackId];
+        return;
+    }
+    
     WXPayRequsestHandler *req = [[WXPayRequsestHandler alloc] initWithAppId:self.appId mchId:self.partnerId partnerKey:self.partnerKey];
 
     //获取到实际调起微信支付的参数后，在app端调起支付
