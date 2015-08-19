@@ -1,6 +1,5 @@
 #import "CDVWeixin.h"
 #import "WXUtil.h"
-#import "WXHttpUtil.h"
 #import "WXApi.h"
 
 #import "WXPayRequsestHandler.h"
