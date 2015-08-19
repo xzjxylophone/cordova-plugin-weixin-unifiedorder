@@ -105,7 +105,7 @@
         return;
     }
     
-    WXPayRequsestHandler *req = [[WXPayRequsestHandler alloc] initWithAppId:self.appId mchId:self.partnerId partnerKey:self.partnerKey];
+    WXPayRequsestHandler *req1 = [[WXPayRequsestHandler alloc] initWithAppId:self.appId mchId:self.partnerId partnerKey:self.partnerKey];
 
     //获取到实际调起微信支付的参数后，在app端调起支付
 //    NSMutableDictionary *dict = [req wholePayInfoWithPatyPayInfo:prepayInfo];
@@ -114,6 +114,7 @@
 //        CDVPluginResult* result = [CDVPluginResult resultWithStatus: CDVCommandStatus_ERROR messageAsString:debug];
 //        [self.commandDelegate sendPluginResult:result callbackId:self.currentCallbackId];
 //    } else {
+    NSMutableDictionary *dict = prepayInfo;
         CDVPluginResult *result = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsString:@"下单成功，调起微信支付"];
         [self.commandDelegate sendPluginResult:result callbackId:self.currentCallbackId];
         NSMutableString *stamp  = [dict objectForKey:@"timestamp"];
