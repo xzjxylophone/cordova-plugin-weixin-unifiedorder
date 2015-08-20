@@ -114,8 +114,8 @@
 //        [self.commandDelegate sendPluginResult:result callbackId:self.currentCallbackId];
 //    } else {
     NSMutableDictionary *dict = prepayInfo;
-        CDVPluginResult *result = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsString:@"下单成功，调起微信支付"];
-        [self.commandDelegate sendPluginResult:result callbackId:self.currentCallbackId];
+//        CDVPluginResult *result = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsString:@"下单成功，调起微信支付"];
+//        [self.commandDelegate sendPluginResult:result callbackId:self.currentCallbackId];
         NSMutableString *stamp  = [dict objectForKey:@"timestamp"];
         //调起微信支付
         PayReq* req             = [[PayReq alloc] init];
